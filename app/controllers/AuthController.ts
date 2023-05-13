@@ -1,23 +1,26 @@
- 
+import {v4} from "uuid";
+import Redis from "../services/Redis";
 
-export default class UserController {
+export default class AuthController {
     
   public async index (request,response) { 
-  
-    
-    return response.inertia("hello",{title : "Ayam Goreng"})
-
   }
 
   public async create (request,response) {
   }
 
   public async store (request,response) {
+    
+    const token = "maulana"+":"+v4();
+
+    await Redis.set(token,JSON.stringify({
+      "name" : "Maulana Shalihin"
+    }));
+
+    response.cookie("auth_id",token).send("OK");
   }
 
   public async show (request,response) {
-
-    response.send(request.params.id)
   }
 
   public async edit (request,response) {

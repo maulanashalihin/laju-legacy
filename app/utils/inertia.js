@@ -9,15 +9,13 @@ const lodashPick = (object, keys) => {
     }, {});
 };
 
-const setupProps = async (props) => {
-    const _props = { ...props };
-    for (i in _props) {
-        if (typeof _props[i] === "object") {
-            _props[i] = await setupProps(_props[i]);
-        } else if (typeof _props[i] === "function") {
-            _props[i] = await _props[i].call();
-        }
-    }
+const setupProps = async (props,share) => {
+      
+    let _props = props; 
+
+    if (share) {
+        _props = { ...props, ...share };
+    } 
     return _props;
 };
 
@@ -27,7 +25,7 @@ const getRequestedProps = (req, component, props) => {
         if (req.header("X-Inertia-Partial-Component") === component) {
             return lodashPick(props, requestedProps.split(","));
         }
-    }
+    } 
     return props;
 };
 
@@ -49,7 +47,8 @@ function view( {page,js}) {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>App</title>
+        <title>Orderform</title>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
     
@@ -79,7 +78,7 @@ const inertia = (options = {}) => {
             const props = getRequestedProps(req, component, inertiaProps);
             const inertiaObject = {
                 component: component,
-                props: await setupProps(props),
+                props: await setupProps(props, req.share),
                 url: url, 
                 version: options.version,
             }; 

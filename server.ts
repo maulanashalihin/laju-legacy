@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 import inertia from "./app/utils/inertia";
-import Web from "./routes/web";
+import Web from "./routes/web"; 
 
 const HyperExpress = require('hyper-express');
 const webserver = new HyperExpress.Server();
@@ -23,8 +23,7 @@ webserver.use(
     })
 );
 
-
-webserver.use('/', Web);
+webserver.use(Web); 
 
 const LiveAssets = new LiveDirectory(__dirname+"/public/assets",{  // We want to provide the system path to the folder. Avoid using relative paths.
     keep: {

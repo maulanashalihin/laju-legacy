@@ -18,7 +18,9 @@
     "dotenv": "^16.0.3",
     "hyper-express": "^6.5.9",
     "live-directory": "^3.0.3",
-    "prisma": "^4.14.0"
+    "prisma": "^4.14.0",
+    "redis": "^4.6.6",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.2.0",
