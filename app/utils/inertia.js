@@ -71,6 +71,7 @@ const inertia = (options = {}) => {
     };
 
     return (req, res, next) => {
+        
         res.inertia = async (component, inertiaProps, viewProps) => {
             const url = `${req.protocol}://${req.get("host")}${
                 req.originalUrl

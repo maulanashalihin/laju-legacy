@@ -1,5 +1,11 @@
-import { PrismaClient } from '@prisma/client'
+import config from '../../knexfile';
 
-let prisma = new PrismaClient()
 
-export default prisma
+
+let knex = require('knex')(config.development);
+ 
+knex.connection = (stage)=>{
+    knex = require('knex')(config[stage]);
+    return knex;
+}
+export default knex;

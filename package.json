@@ -13,13 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "@inertiajs/svelte": "^1.0.6",
-    "@prisma/client": "^4.14.0",
+    "bcrypt": "^5.1.0",
     "concurrently": "^8.0.1",
     "dotenv": "^16.0.3",
+    "express-group-routes": "^1.1.0",
+    "hashids": "^2.2.11",
     "hyper-express": "^6.5.9",
+    "knex": "^2.4.2",
     "live-directory": "^3.0.3",
-    "prisma": "^4.14.0",
     "redis": "^4.6.6",
+    "sqlite3": "^5.1.6",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

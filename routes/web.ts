@@ -15,13 +15,22 @@ const authController = new AuthController();
 
 // guest routes
 
-Route.get("/login",authController.store);
+Route.get("/login",authController.loginPage);
 
+Route.post("/login",authController.processLogin);
+
+Route.get("/register",authController.registerPage);
+
+Route.post("/register",authController.processRegister);
+
+Route.post("/logout",authController.logout)
 
 // auth routes
 Route.use("/auth",Auth)
 
-Route.get("/auth/user",userController.index) 
+Route.get("/auth/user",userController.index)
+
+
 
 
 

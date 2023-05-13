@@ -1,7 +1,7 @@
 import Redis from "../services/Redis";
 
-export default async (request,response,next) => {
-     
+export default async (request,response) => {
+      
     if(request.cookies.auth_id)
     { 
         const user_string = await Redis.get(request.cookies.auth_id);
@@ -13,8 +13,6 @@ export default async (request,response,next) => {
             request.share = {
                 "user" : request.user
             }
-
-            next();
         }
        
     }

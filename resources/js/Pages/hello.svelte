@@ -1,6 +1,12 @@
 <script> 
-    export let user = {name : "world"}; 
-    export let title;
+    export let user = {}; 
+    import {router} from "@inertiajs/svelte"
+    
+    function Logout()
+    {
+        router.post('/logout')
+    }
 </script> 
-Nama : {user.name}
-{title}
+Nama : {user.email} 
+
+<button on:click={Logout}>Logout</button>
