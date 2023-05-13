@@ -9,13 +9,18 @@ const lodashPick = (object, keys) => {
     }, {});
 };
 
-const setupProps = async (props,share) => {
+const setupProps = async (props,req) => {
       
     let _props = props; 
 
-    if (share) {
-        _props = { ...props, ...share };
-    } 
+    const share = req.share || {};
+
+    let error = req.cookies.error;
+
+     
+
+    _props = { ...props, ...share, error };
+
     return _props;
 };
 
@@ -79,10 +84,15 @@ const inertia = (options = {}) => {
             const props = getRequestedProps(req, component, inertiaProps);
             const inertiaObject = {
                 component: component,
-                props: await setupProps(props, req.share),
+                props: await setupProps(props, req),
                 url: url, 
                 version: options.version,
             }; 
+
+            if(inertiaObject.props.error)
+            {
+                res.clearCookie("error")
+            }
 
             if (!req.header("X-Inertia")) 
             { 

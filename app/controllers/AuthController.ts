@@ -35,9 +35,11 @@ export default class AuthController {
         return Authenticate.process(user,response);
       }
       else
-      {
-        return response.redirect("/login")
+      { 
+        return response.cookie("error","Maaf, Password salah").redirect("/login")
       }
+    }else{
+      return response.cookie("error","Email tidak terdaftar").redirect("/login")
     }
     
   }
@@ -48,19 +50,26 @@ export default class AuthController {
     let body = await request.json(); 
     const {email,password} = body;
 
-    const id = await Database.table("users").insert({
-      email : email,
-      password : await Authenticate.hash(password)
-    })
+    try {
+        const id = await Database.table("users").insert({
+          email : email,
+          password : await Authenticate.hash(password)
+        })
 
-    const user = {
-      id : id[0],
-      email : email
-    };
-
-    console.log(user)
+        const user = {
+          id : id[0],
+          email : email
+        };
+ 
 
     return Authenticate.process(user,response);
+
+   } catch (error) {
+       
+
+      return response.cookie("error","Maaf, Email sudah terdaftar").redirect("/register")
+   }
+
 
 
  

@@ -7,6 +7,7 @@
       password_confirmation: '',
       terms: false,
     }
+    export let error;
     function submitForm()
     {
       
@@ -25,6 +26,11 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Login to your account
                 </h1>
+                {#if error}
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                   {error}
+                </div>
+                {/if}
                 <form class="space-y-4 md:space-y-6" on:submit|preventDefault={submitForm}>
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
