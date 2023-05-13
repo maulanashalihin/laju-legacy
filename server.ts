@@ -61,6 +61,9 @@ webserver.get('/assets/*', (request, response) => {
     }
 });
 
+webserver.get('*', (request, response) => {
+    response.status(404).send('Not Found');
+});
 // Activate webserver by calling .listen(port, callback);
 webserver.listen(3005).catch((err: any) => {
     console.log(err);
