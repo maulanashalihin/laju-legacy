@@ -80,6 +80,7 @@ export default class AuthController {
   
 
   public async show (request,response) {
+    
   }
 
   public async edit (request,response) {

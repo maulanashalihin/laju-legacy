@@ -45,7 +45,8 @@ Encore.setPublicPath('/assets')
 | entrypoints.
 |
 */
-Encore.addEntry('app', './resources/js/app.js')
+Encore.addEntry('app', './resources/js/app.js') 
+Encore.addEntry('main', './resources/jsx/main.jsx') 
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,8 @@ Encore.addEntry('app', './resources/js/app.js')
 //   from: './resources/images',
 //   to: 'images/[path][name].[hash:8].[ext]',
 // })
+
+Encore.enableReactPreset()
 
 /*
 |--------------------------------------------------------------------------
