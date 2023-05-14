@@ -5,7 +5,7 @@
   "main": "server.js", 
   "scripts": {
     "dev": "clear && concurrently 'npx nodemon' 'encore dev --watch'  ", 
-    "copy-files": "copyfiles prisma/** prisma/migrations/** prisma/migrations/**/**   build/prisma",
+    "copy-files": "copyfiles   resources/views/**  build",
     "build": "rimraf ./build && tsc && npm run copy-files && encore production --progress"
   },
   "author": "",
