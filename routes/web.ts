@@ -29,35 +29,27 @@ Route.post("/logout",authController.logout)
 Route.use("/auth",Auth)
 
 Route.get("/auth/user",userController.index)
+    
 
 
-import { renderToString } from 'react-dom/server';
-import App from "../resources/jsx/App"
-import React from "react";
 
-Route.get("/",(req,res)=>{
-    var props = { user: {name: "Santai"}};
-    const html = renderToString(React.createElement(App, props));
- 
-    const result =  `<!DOCTYPE html>
-    <html lang="en-gb">
-    
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    </head>
-    <body>
-    
-        <div id="root"  >${html}</div>
- 
-    
-    
-    </body>
-    </html>`
- 
 
-    res.send(result)
+Route.get("/",async (req,res)=>{  
+
+
+    const Home = require('../resources/views/home.svelte').default;
+
+    const { html,   } = Home.render({  });
+
+
+    res.send(html)
+
+    
+    
+
+
+
+
 })
 
 

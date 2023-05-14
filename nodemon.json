@@ -1,6 +1,6 @@
 {
     "watch": ["**"],
-    "ext": ".ts,.js",
+    "ext": ".ts,.js,.svelte",
     "ignore": [],
     "exec": "npx ts-node server.ts"
   }

@@ -10,9 +10,16 @@ const LiveDirectory = require('live-directory');
  import manifest from "./public/assets/manifest.json";
  import {version} from "./package.json";
 
-import view from "./app/utils/view";
+//  rendering html files
+// import view from "./app/utils/view";
+// webserver.use(view());
+// 
+
+
+// rendering svelte files
+require('svelte/register');
  
-webserver.use(view());
+  
 
 
 webserver.use(

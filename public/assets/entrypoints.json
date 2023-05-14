@@ -4,11 +4,6 @@
       "js": [
         "/assets/app.js"
       ]
-    },
-    "main": {
-      "js": [
-        "/assets/main.js"
-      ]
     }
   }
 }
