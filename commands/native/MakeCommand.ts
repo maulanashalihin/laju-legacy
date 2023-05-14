@@ -20,7 +20,7 @@ class Command   {
        const command = filename.toLowerCase()
       
       
-      fs.writeFileSync("./src/commands/"+filename+".ts",this.getText(command))
+      fs.writeFileSync("./commands/"+filename+".ts",this.getText())
     }
     
    
@@ -29,24 +29,20 @@ class Command   {
   }
 
 
-  getText(filename : string)
+  getText()
 {
-  return `class Command{
+  return `
+  import Database from "../app/services/Database";
 
-    /**
-     * Command name is used to run the command
-     */
-    public args = [];
+  (async () => {
     
-    public   commandName = '${filename}'
-  
-    public   run () {  
-   
-    }
-    
-}
+    const users = await Database.from("users").select("*");
 
-export default new Command()
+    console.log(users);
+    
+    process.exit(1);
+  })()
+
 `
 }
 }

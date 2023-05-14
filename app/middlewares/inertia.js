@@ -1,4 +1,4 @@
-import { option } from "yargs";
+ 
 
 const lodashPick = (object, keys) => {
     return keys.reduce((obj, key) => {

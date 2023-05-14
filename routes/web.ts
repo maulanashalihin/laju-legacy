@@ -33,22 +33,33 @@ Route.get("/auth/user",userController.index)
 
 
 
+ 
 
 Route.get("/",async (req,res)=>{  
 
-
     const Home = require('../resources/views/home.svelte').default;
 
-    const { html,   } = Home.render({  });
-
+    const { html } = Home.render({ user : {name : "Maulana Shalihin"} });
 
     res.send(html)
 
-    
-    
+})
 
 
+Route.get("/test",async (req,res)=>{  
 
+    res.send("OK")
+
+})
+
+
+Route.get("/hello",async (req,res)=>{  
+
+    const Home = require('../resources/views/hello.svelte').default;
+
+    const { html } = Home.render({  });
+
+    res.send(html)
 
 })
 

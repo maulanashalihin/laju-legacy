@@ -1,13 +1,16 @@
 require('dotenv').config()
 
-import inertia from "./app/utils/inertia";
+import inertia from "./app/middlewares/inertia";
+
 import Web from "./routes/web"; 
 
 const HyperExpress = require('hyper-express');
 const webserver = new HyperExpress.Server();
+
 const LiveDirectory = require('live-directory');
 
  import manifest from "./public/assets/manifest.json";
+
  import {version} from "./package.json";
 
 //  rendering html files

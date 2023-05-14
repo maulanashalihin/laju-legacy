@@ -4,6 +4,8 @@
         title : "Form Saya"
     }
 
+    export let user;
+
     let data = [1,2,3,4];
 </script>
 <!DOCTYPE html>
@@ -14,19 +16,9 @@
     <title>Document</title>
 </head>
 <body>
-    halo perbaiki
-
-    {#each data as item}
-        {item}
-    {/each}
-
+    hai nama saya  {user.name}
     <div id="form" data="{JSON.stringify(form)}">
 
-    </div>
-    <script>
-    //    const props = document.querySelector("#form").getAttrib;
-       const data = document.querySelector("#form").getAttribute("data");
-       console.log(JSON.parse(data))    
-    </script>
+    </div> 
 </body>
 </html>

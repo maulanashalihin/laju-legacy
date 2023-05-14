@@ -6,7 +6,6 @@ import Authenticate from "../services/Authenticate";
 export default class AuthController {
     
   public async registerPage (request,response) { 
-
     return response.inertia("auth/register")
   }
 
