@@ -77,4 +77,4 @@ webserver.get('*', (request, response) => {
 // Activate webserver by calling .listen(port, callback);
 webserver.listen(3005).catch((err: any) => {
     console.log(err);
-})
+}) 

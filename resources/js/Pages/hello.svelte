@@ -9,4 +9,4 @@
 </script> 
 Nama : {user.email} 
 
-<button on:click={Logout}>Logout</button>
+<button on:click={Logout}>Logout</button>   

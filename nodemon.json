@@ -1,5 +1,5 @@
 {
-    "watch": ["**"],
+    "watch": ["app/**","resources/views/**","server.ts"],
     "ext": ".ts,.js,.svelte",
     "ignore": [],
     "exec": "npx ts-node server.ts"
