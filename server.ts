@@ -29,13 +29,13 @@ webserver.use(
     inertia({
         view: "index",
         version: version,
-        js : manifest["assets/app.js"]
+        js : "http://127.0.0.1:8000/js/app.js"
     })
 );
 
 webserver.use(Web); 
 
-const LiveAssets = new LiveDirectory(__dirname+"/public/assets",{  // We want to provide the system path to the folder. Avoid using relative paths.
+const LiveAssets = new LiveDirectory(__dirname+"/public",{  // We want to provide the system path to the folder. Avoid using relative paths.
     keep: {
         extensions: ['.css', '.js', '.json', '.png', '.jpg', '.jpeg'] // We only want to serve files with these extensions
     },
@@ -48,12 +48,15 @@ const LiveAssets = new LiveDirectory(__dirname+"/public/assets",{  // We want to
     }
 });
 
+
+
 // Create static serve route to serve frontend assets
-webserver.get('/assets/*', (request, response) => {
+webserver.get('*', (request, response) => {
     // Strip away '/assets' from the request path to get asset relative path
     // Lookup LiveFile instance from our LiveDirectory instance.
 
-    const path = request.path.replace('/assets/', '');
+    const path = request.path;
+ 
  
 
     const asset = LiveAssets.get(path);
@@ -71,9 +74,7 @@ webserver.get('/assets/*', (request, response) => {
     }
 });
 
-webserver.get('*', (request, response) => {
-    response.status(404).send('Not Found');
-});
+ 
 // Activate webserver by calling .listen(port, callback);
 webserver.listen(3005).catch((err: any) => {
     console.log(err);

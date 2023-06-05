@@ -46,11 +46,7 @@ Route.get("/",async (req,res)=>{
 })
 
 
-Route.get("/test",async (req,res)=>{  
-
-    res.send("OK")
-
-})
+ 
 
 
 Route.get("/hello",async (req,res)=>{  
