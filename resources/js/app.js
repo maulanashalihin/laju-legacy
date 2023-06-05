@@ -7,3 +7,8 @@ createInertiaApp({
     new App({ target: el, props })
   },
 })
+
+console.log("yes")
+
+console.log("hebat")
+console.log("hebat")

@@ -49,11 +49,7 @@ Route.get("/",async (req,res)=>{
 
 Route.get("/hello",async (req,res)=>{  
 
-    const Home = require('../resources/views/hello.svelte').default;
-
-    const { html } = Home.render({  });
-
-    res.send(html)
+    res.view("hello.svelte",{name : "Maulana Shalihin"})
 
 })
 

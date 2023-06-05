@@ -97,7 +97,7 @@ Encore.disableSingleRuntimeChunk()
 | will ensure that all unused files from the previous build are removed.
 |
 */
-Encore.cleanupOutputBeforeBuild()
+// Encore.cleanupOutputBeforeBuild()
 
 /*
 |--------------------------------------------------------------------------
