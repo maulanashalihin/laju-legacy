@@ -10,10 +10,10 @@ export default class AuthController {
   }
 
   public async loginPage (request,response) { 
-
+ 
     return response.inertia("auth/login")
   }
-
+ 
   public async create (request,response) {
   }
 
