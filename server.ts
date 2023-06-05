@@ -9,7 +9,7 @@ const webserver = new HyperExpress.Server();
 
 const LiveDirectory = require('live-directory');
 
- import manifest from "./public/assets/manifest.json";
+ import manifest from "./public/manifest.json";
 
  import {version} from "./package.json";
 
@@ -29,7 +29,7 @@ webserver.use(
     inertia({
         view: "index",
         version: version,
-        js : "http://127.0.0.1:8000/js/app.js"
+        js : manifest["js/app.js"]
     })
 );
 
