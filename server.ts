@@ -14,16 +14,15 @@ const LiveDirectory = require('live-directory');
  import {version} from "./package.json";
 
 //  rendering html files
-// import view from "./app/utils/view";
-// webserver.use(view());
+import view from "./app/middlewares/view";
+
+webserver.use(view());
 // 
 
 
 // rendering svelte files
 require('svelte/register');
- 
-  console.log(manifest)
-
+  
 
 webserver.use(
     inertia({

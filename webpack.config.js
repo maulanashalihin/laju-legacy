@@ -62,7 +62,7 @@ Encore.addEntry('app', './resources/js/app.js')
 //   to: 'images/[path][name].[hash:8].[ext]',
 // })
 
-Encore.enableReactPreset()
+// Encore.enableReactPreset()
 
 /*
 |--------------------------------------------------------------------------

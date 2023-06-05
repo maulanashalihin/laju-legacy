@@ -16,7 +16,7 @@
     <title>Document</title>
 </head>
 <body>
-    hai nama saya  {user.name}
+    hai nama saya  {user.name}  
     <div id="form" data="{JSON.stringify(form)}">
 
     </div> 

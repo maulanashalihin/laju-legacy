@@ -13,6 +13,8 @@ export default async (request,response) => {
             request.share = {
                 "user" : request.user
             }
+        }else{
+            response.status(401).send("Unauthorized");
         }
        
     }

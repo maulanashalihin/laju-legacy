@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "clear && concurrently 'npx nodemon' 'encore dev-server --port 8080'  ",
+    "dev": "clear && concurrently 'encore dev-server --port 8080'  'npx nodemon'  ",
     "copy-files": "copyfiles   resources/views/**  build", 
     "build": "rimraf ./build && tsc && npm run copy-files && encore production --progress"
   },

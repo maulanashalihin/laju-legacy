@@ -32,16 +32,14 @@ Route.get("/auth/user",userController.index)
     
 
 
-
+ 
  
 
 Route.get("/",async (req,res)=>{  
 
-    const Home = require('../resources/views/home.svelte').default;
 
-    const { html } = Home.render({ user : {name : "Maulana Shalihin"} });
-
-    res.send(html)
+    res.view("home.svelte",{ user : {name : "Maulana Shalihin"} })
+  
 
 })
 
