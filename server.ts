@@ -22,14 +22,14 @@ const LiveDirectory = require('live-directory');
 // rendering svelte files
 require('svelte/register');
  
-  
+  console.log(manifest)
 
 
 webserver.use(
     inertia({
         view: "index",
         version: version,
-        js : manifest["js/app.js"]
+        js : manifest["app.js"]
     })
 );
 
@@ -55,7 +55,7 @@ webserver.get('*', (request, response) => {
     // Strip away '/assets' from the request path to get asset relative path
     // Lookup LiveFile instance from our LiveDirectory instance.
 
-    const path = request.path;
+    const path = request.path.replace('/', '');
  
  
 

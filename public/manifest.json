@@ -1,4 +1,3 @@
-
 {
-  "js/app.js": "http://0.0.0.0:8000/js/app.js"
+  "app.js": "http://localhost:8080/app.js"
 }
