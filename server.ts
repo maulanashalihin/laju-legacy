@@ -75,6 +75,8 @@ webserver.get('*', (request, response) => {
 
  
 // Activate webserver by calling .listen(port, callback);
-webserver.listen(3005).catch((err: any) => {
+webserver.listen(process.env.PORT).then(()=>{
+    console.log(`Server is running at http://localhost:${process.env.PORT}`);
+}).catch((err: any) => {
     console.log(err);
 }) 
