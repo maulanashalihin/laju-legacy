@@ -1,5 +1,5 @@
  
-import Database from "./app/services/Database";
+import Database from "./app/services/DB";
 
 (async()=>{
   const users = await Database.from("users");

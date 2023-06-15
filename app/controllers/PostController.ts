@@ -1,3 +1,5 @@
+ 
+
 export default class PostController {
     
   public async index (request,response) { 
@@ -7,6 +9,7 @@ export default class PostController {
   }
 
   public async store (request,response) {
+  
   }
 
   public async show (request,response) {

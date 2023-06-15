@@ -1,6 +1,6 @@
  
 import Redis from "../services/Redis";
-import Database from "../services/Database"
+import Database from "../services/DB"
 import Authenticate from "../services/Authenticate"; 
 
 export default class AuthController {
