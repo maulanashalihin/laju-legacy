@@ -7,10 +7,7 @@ export default class UserController {
   public async index (request,response) { 
    
     const users = await Database.from("users")
-
-    console.log(request.user)
-
-    console.log(users)
+ 
     
     return response.inertia("hello",{title : "Ayam Goreng"})
 

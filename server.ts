@@ -19,6 +19,11 @@ import view from "./app/middlewares/view";
 webserver.use(view());
 // 
 
+var cors = require('cors') 
+
+webserver.use(cors())
+
+
 
 // rendering svelte files
 require('svelte/register');
@@ -28,7 +33,8 @@ webserver.use(
     inertia({
         view: "index",
         version: version,
-        js : manifest["app.js"]
+        js : manifest["app.js"],
+        css : manifest["app.css"]
     })
 );
 
@@ -65,7 +71,13 @@ webserver.get('*', (request, response) => {
     if (asset.cached) {
         // Simply send the Buffer returned by asset.content as the response
         // You can convert a Buffer to a string using Buffer.toString() if your webserver requires string response body
-        return response.send(asset.content);
+        if(path.endsWith(".css"))
+        return response.header("Content-Type","text/css").send(asset.content);
+
+        if(path.endsWith(".js"))
+        return response.header("Content-Type","text/javascript").send(asset.content);
+
+        response.send(asset.content);
     } else {
         // For files that are not cached, you must create a stream and pipe it as the response for memory efficiency
         const readable = asset.stream();
@@ -75,6 +87,8 @@ webserver.get('*', (request, response) => {
 
  
 // Activate webserver by calling .listen(port, callback);
-webserver.listen(3005).catch((err: any) => {
+webserver.listen(process.env.PORT).then(()=>{
+    console.log(`Server is running at http://localhost:${process.env.PORT}`);
+}).catch((err: any) => {
     console.log(err);
 }) 

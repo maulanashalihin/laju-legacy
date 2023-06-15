@@ -173,7 +173,7 @@ Encore.enableVersioning(Encore.isProduction())
 | PostCSS or CSS.
 |
 */
-//  Encore.enablePostCssLoader()
+ Encore.enablePostCssLoader()
 // Encore.configureCssLoader(() => {})
 
 /*

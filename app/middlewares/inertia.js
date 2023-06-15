@@ -43,23 +43,24 @@ const shouldConflict = (req, version) => {
     return req.method === `GET` && req.header("X-Inertia-Version") !== version;
 };
  
-function view( {page,js}) {
+function view( {page,js,css}) {
     
     const result =  `<!DOCTYPE html>
-    <html lang="en-gb">
+    <html lang="en-gb" class="dark">
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Orderform</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <title>CRM</title> 
+        <link rel="stylesheet" href="${css}">
+        <script src="${js}" defer></script>
     </head>
     <body>
     
         <div id="app" data-page='${  (page) }'></div>
      
-        <script src="${js}"></script>
+       
     
     </body>
     </html>`
@@ -78,7 +79,7 @@ const inertia = (options = {}) => {
     return (req, res, next) => {
         
         res.inertia = async (component, inertiaProps, viewProps) => {
-            const url = `${req.protocol}://${req.get("host")}${
+            const url = `//${req.get("host")}${
                 req.originalUrl
             }`; 
             const props = getRequestedProps(req, component, inertiaProps);
@@ -100,11 +101,12 @@ const inertia = (options = {}) => {
                     {
                         layout: false,
                         js : options.js,
+                        css : options.css,
                         page: JSON.stringify(inertiaObject),
                         ...viewProps,
                     });
 
-                return res.send(html) 
+                return res.type('html').send(html) 
             }
 
             if (shouldConflict(req, options.version)) {

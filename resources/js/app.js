@@ -1,5 +1,5 @@
 import { createInertiaApp } from '@inertiajs/svelte'
-
+import "./index.css"
 
 createInertiaApp({
   resolve: name => require(`./Pages/${name}.svelte`),
@@ -7,8 +7,4 @@ createInertiaApp({
     new App({ target: el, props })
   },
 })
-
-console.log("yes")
-
-console.log("hebat")
-console.log("hebat")
+ 

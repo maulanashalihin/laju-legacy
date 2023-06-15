@@ -54,6 +54,7 @@ export default class AuthController {
           email : email,
           password : await Authenticate.hash(password)
         })
+ 
 
         const user = {
           id : id[0],

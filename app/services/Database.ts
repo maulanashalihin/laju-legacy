@@ -1,11 +1,12 @@
 import config from '../../knexfile';
 
+require('dotenv').config()
 
 
-let knex = require('knex')(config.development);
- 
-knex.connection = (stage)=>{
-    knex = require('knex')(config[stage]);
-    return knex;
+let DB = require('knex')(config[process.env.DB_CONNECTION]);
+
+DB.connection = (stage)=>{
+    DB = require('knex')(config[stage]);
+    return DB;
 }
-export default knex;
+export default DB;
