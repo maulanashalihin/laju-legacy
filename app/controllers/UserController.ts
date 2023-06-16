@@ -1,7 +1,5 @@
 import Database from "../services/DB"
 
- 
-
 export default class UserController {
     
   public async index (request,response) { 

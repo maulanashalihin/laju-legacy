@@ -2,6 +2,8 @@ import AuthController from "../app/controllers/AuthController";
 import UserController from "../app/controllers/UserController";
 import Auth from "../app/middlewares/auth"
 
+
+
 const HyperExpress = require('hyper-express');
 
 const Route = new HyperExpress.Router();
@@ -52,6 +54,8 @@ Route.get("/hello",async (req,res)=>{
     res.view("hello.svelte",{name : "Maulana Shalihin"})
 
 })
+
+
 
 
 
