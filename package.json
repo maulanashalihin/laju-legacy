@@ -9,7 +9,7 @@
     "cypress": "npx cypress open",
     "copy-public": "cp -r public build",
     "copy-views": "cp -r resources/views build/views",
-    "build": "rm -rf build && node sync_version.js && node clean && encore production --progress  && tsc && npm run copy-public && npm run copy-views "
+    "build": "rm -rf build && node sync_version && node clean && encore production --progress  && tsc && npm run copy-public && npm run copy-views "
   },
   "author": "",
   "license": "ISC",
