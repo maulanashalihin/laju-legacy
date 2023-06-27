@@ -1,5 +1,4 @@
-import AuthController from "../app/controllers/AuthController";
-import UserController from "../app/controllers/UserController";
+import AuthController from "../app/controllers/AuthController"; 
 import Auth from "../app/middlewares/auth"
 
 
@@ -7,55 +6,35 @@ import Auth from "../app/middlewares/auth"
 const HyperExpress = require('hyper-express');
 
 const Route = new HyperExpress.Router();
-
-
-// user routes
-const userController = new UserController();
-const authController = new AuthController();
+ 
  
 
 
 // guest routes
 
-Route.get("/login",authController.loginPage);
+Route.get("/login",AuthController.loginPage);
 
-Route.post("/login",authController.processLogin);
+Route.post("/login",AuthController.processLogin);
 
-Route.get("/register",authController.registerPage);
+Route.get("/register",AuthController.registerPage);
 
-Route.post("/register",authController.processRegister);
+Route.post("/register",AuthController.processRegister);
 
-Route.post("/logout",authController.logout)
+Route.post("/logout",AuthController.logout)
 
 // auth routes
 Route.use("/auth",Auth)
 
-Route.get("/auth/user",userController.index)
-    
-
-
- 
+Route.get("/auth/home",AuthController.homePage) 
  
 
 Route.get("/",async (req,res)=>{  
 
 
-    res.view("home.svelte",{ user : {name : "Maulana Shalihin"} })
+    res.view("home.svelte")
   
 
-})
-
-
- 
-
-
-Route.get("/hello",async (req,res)=>{  
-
-    res.view("hello.svelte",{name : "Maulana Shalihin"})
-
-})
-
-
+}) 
 
 
 

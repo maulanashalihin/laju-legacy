@@ -21,7 +21,7 @@ class Command   {
       }
       
       
-      fs.writeFileSync("./app/controllers/"+filename+".ts",this.getText(filename))
+      fs.writeFileSync("./app/controllers/"+filename+".ts",this.getText())
     }
     
    
@@ -30,9 +30,9 @@ class Command   {
   }
 
 
-  getText(filename : string)
+  getText()
 {
-  return `export default class ${filename} {
+  return `class Controller {
     
   public async index (request,response) { 
   }
@@ -54,7 +54,10 @@ class Command   {
 
   public async destroy (request,response) {
   }
+
 }
+
+export default new Controller()
   `
 }
 }

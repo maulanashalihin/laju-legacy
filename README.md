@@ -121,6 +121,13 @@ create https://inertiajs.com/ with by passing the inertia file in Pages folder l
         return response.inertia("auth/login")
     
     }
+
+### Route to Controller
+you can create server side rendering app using svelte. just include svelte files in views folder and pass the file in route or controller like this
+
+    import UserController from "../app/controllers/UserController"; 
+
+    Route.get("/user",UserController.index);
     
 ### Benchmark Results
 **Note!** these benchmarks should be **run over network for proper results** as running these benchmarks on localhost significantly strains the C++ to Javascript communications and class initializations performance due to near **no latency** in request times which is **unrealistic for real world scenarios**.

@@ -3,9 +3,13 @@ import Redis from "../services/Redis";
 import Database from "../services/DB"
 import Authenticate from "../services/Authenticate"; 
 
-export default class AuthController {
+class AuthController {
     
   public async registerPage (request,response) { 
+    return response.inertia("auth/register")
+  }
+
+  public async homePage (request,response) { 
     return response.inertia("auth/register")
   }
 
@@ -102,3 +106,5 @@ export default class AuthController {
   }
 }
   
+
+export default new AuthController();

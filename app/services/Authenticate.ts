@@ -18,7 +18,7 @@ class Autenticate {
       
         await Redis.set(token,JSON.stringify(user));
     
-        response.cookie("auth_id",token).redirect("/auth/user");
+        response.cookie("auth_id",token).redirect("/auth/home");
     }
 }
 
