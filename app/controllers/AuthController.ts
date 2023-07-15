@@ -1,7 +1,11 @@
  
 import Redis from "../services/Redis";
 import Database from "../services/DB"
-import Authenticate from "../services/Authenticate"; 
+import Authenticate from "../services/Authenticate";  
+import  { redirectParamsURL } from "../services/GoogleAuth";
+ import axios from "axios"
+import { generateUUID } from "../services/helper";
+import dayjs from "dayjs"
 
 class AuthController {
     
@@ -10,16 +14,84 @@ class AuthController {
   }
 
   public async homePage (request,response) { 
-    return response.inertia("auth/register")
+    return response.inertia("home")
   }
 
   public async loginPage (request,response) { 
- 
+
+
     return response.inertia("auth/login")
   }
+
+  
  
-  public async create (request,response) {
+  public async redirect (request,response) {
+
+    const params = redirectParamsURL();
+
+    const googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
+
+    return response.redirect(googleLoginUrl);
+
   }
+
+  public async googleCallback (request,response) {
+
+      const {code} = request.query;
+ 
+
+      const { data } = await axios({
+        url: `https://oauth2.googleapis.com/token`,
+        method: 'post',
+        data: {
+          client_id: process.env.GOOGLE_CLIENT_ID,
+          client_secret: process.env.GOOGLE_CLIENT_SECRET,
+          redirect_uri: process.env.GOOGLE_REDIRECT_URI,
+          grant_type: 'authorization_code',
+          code,
+        },
+      });
+      console.log(data); // { access_token, expires_in, token_type, refresh_token }
+
+      const result = await axios({
+        url: 'https://www.googleapis.com/oauth2/v2/userinfo',
+        method: 'get',
+        headers: {
+          Authorization: `Bearer ${data.access_token}`,
+        },
+      });
+      
+      const {email,name,verified_email} = result.data;
+
+      const check = await Database.from("users").where("email",email).first();
+
+      if(check)
+      {
+        // 
+        return Authenticate.process(check,response);
+      }else{
+        const user = {
+          id : generateUUID(),
+          email : email,
+          password : await Authenticate.hash(email),
+          name : name,
+          is_verified : verified_email,
+          created_at : dayjs().format("YYYY-MM-DD HH:mm:ss"),
+          updated_at : dayjs().format("YYYY-MM-DD HH:mm:ss")
+        }
+        console.log(user)
+
+        await Database.table("users").insert(user);
+
+        return Authenticate.process(user,response);;
+      }
+
+
+      response.send("google callback")
+
+  }
+
+  
 
   public async processLogin (request,response) {
      
@@ -108,3 +180,4 @@ class AuthController {
   
 
 export default new AuthController();
+

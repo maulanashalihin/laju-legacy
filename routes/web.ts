@@ -14,6 +14,11 @@ const Route = new HyperExpress.Router();
 
 Route.get("/login",AuthController.loginPage);
 
+Route.get("/google/redirect",AuthController.redirect);
+
+Route.get("/google/callback",AuthController.googleCallback);
+ 
+
 Route.post("/login",AuthController.processLogin);
 
 Route.get("/register",AuthController.registerPage);
