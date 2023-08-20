@@ -31,6 +31,14 @@ Route.post("/logout",AuthController.logout)
 Route.use("/auth",Auth)
 
 Route.get("/auth/home",AuthController.homePage) 
+
+
+
+Route.get("/auth/profile",AuthController.profilePage)
+
+Route.post("/auth/change-profile",AuthController.changeProfile)
+
+Route.post("/auth/change-password",AuthController.changePassword)
  
 
 Route.get("/",async (req,res)=>{  

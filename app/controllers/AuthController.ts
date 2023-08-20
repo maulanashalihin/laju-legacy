@@ -27,7 +27,7 @@ class AuthController {
 
   public async profilePage(request, response) {
 
-    return response.inertia("global/profile")
+    return response.inertia("profile")
 
 
   }
