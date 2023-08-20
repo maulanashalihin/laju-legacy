@@ -52,10 +52,10 @@
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                         <input bind:value={form.password} required type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full p-2.5 " >
-                    </div> 
+                    </div>  
                     <button type="submit" class="w-full text-white bg-fuchsia-600 hover:bg-fuchsia-700 focus:ring-4 focus:outline-none focus:ring-fuchsia-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-fuchsia-600 dark:hover:bg-fuchsia-700 dark:focus:ring-fuchsia-800">Login</button>
                     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                        Belum punya akun?   <a href="/console/register" use:inertia class="font-medium text-fuchsia-600 hover:underline dark:text-fuchsia-500">Buat gratis disini</a>
+                        Belum punya akun?   <a href="/register" use:inertia class="font-medium text-fuchsia-600 hover:underline dark:text-fuchsia-500">Buat gratis disini</a>
                     </p>
                     
                 </form>

@@ -1,4 +1,5 @@
  
+ import manifest from "../../public/manifest.json";
 
 const lodashPick = (object, keys) => {
     return keys.reduce((obj, key) => {
@@ -43,7 +44,7 @@ const shouldConflict = (req, version) => {
     return req.method === `GET` && req.header("X-Inertia-Version") !== version;
 };
  
-function view( {page,js,css}) {
+function view( {page}) {
     
     const result =  `<!DOCTYPE html>
     <html lang="en-gb" class="dark">
@@ -53,13 +54,12 @@ function view( {page,js,css}) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CRM</title> 
-        <link rel="stylesheet" href="${css}">
-        <script src="${js}" defer></script>
+        <link rel="stylesheet" href="${manifest['style.css']}">
+        <script src="${manifest['app.js']}" defer></script>
     </head>
     <body>
     
-        <div id="app" data-page='${  (page) }'></div>
-     
+        <div id="app" data-page='${  (page) }'></div> 
        
     
     </body>
@@ -99,10 +99,8 @@ const inertia = (options = {}) => {
             { 
                 const html = await view( 
                     {
-                        layout: false,
-                        js : options.js,
-                        css : options.css,
-                        page: JSON.stringify(inertiaObject),
+                        layout: false, 
+                        page: JSON.stringify(inertiaObject).replace(/"/g,'&#34;'),
                         ...viewProps,
                     });
 

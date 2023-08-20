@@ -9,7 +9,6 @@ const webserver = new HyperExpress.Server();
 
 const LiveDirectory = require('live-directory');
 
- import manifest from "./public/manifest.json";
 
  import {version} from "./package.json";
 
@@ -32,9 +31,7 @@ require('svelte/register');
 webserver.use(
     inertia({
         view: "index",
-        version: version,
-        js : manifest["app.js"],
-        css : manifest["app.css"]
+        version: version
     })
 );
 
