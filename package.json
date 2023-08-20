@@ -32,6 +32,7 @@
     "hyper-express": "^6.5.9",
     "knex": "^2.4.2",
     "live-directory": "^3.0.3",
+    "nodemailer": "^6.9.4",
     "redis": "^4.6.6",
     "sqlite3": "^5.1.6",
     "toastify-js": "^1.12.0",
