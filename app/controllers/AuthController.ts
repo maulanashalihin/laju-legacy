@@ -50,8 +50,7 @@ class AuthController {
           grant_type: 'authorization_code',
           code,
         },
-      });
-      console.log(data); // { access_token, expires_in, token_type, refresh_token }
+      }); 
 
       const result = await axios({
         url: 'https://www.googleapis.com/oauth2/v2/userinfo',
