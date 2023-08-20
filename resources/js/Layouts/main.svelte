@@ -79,7 +79,7 @@
             <!-- Logo -->
             <a
               use:inertia
-              href="/auth/whatsapp"
+              href="/auth/home"
               class="group inline-flex items-center space-x-2 font-bold text-lg tracking-wide text-gray-700 hover:text-cyan-600 active:text-gray-700"
             > 
               <!-- svelte-ignore a11y-missing-attribute -->
