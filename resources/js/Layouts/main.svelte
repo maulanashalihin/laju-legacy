@@ -3,6 +3,7 @@
     import { clickOutside } from "../Components/helper";
       import { onMount } from "svelte";
       import dayjs from "dayjs"
+    import DripformIcon from "../Components/DripformIcon.svelte";
     let show = false;
   
     let mobile_menu = false;
@@ -15,59 +16,11 @@
   
     let menus = [
       {
-        path: "whatsapp",
-        href: "/auth/whatsapp",
-        title: "Whatsapp",
+        path: "home",
+        href: "/auth/home",
+        title: "Home",
         show: true,
-      },
-      {
-        path: "old-whatsapp",
-        href: "/auth/old-whatsapp",
-        title: "Old Whatsapp",
-        show: true,
-      },
-      {
-        path: "server-health",
-        href: "/auth/server-health",
-        title: "Server Health",
-        show: true,
-      },
-      {
-        path: "users",
-        href: "/auth/admin/user",
-        title: "User",
-        show: user.is_admin == true,
-      },
-      {
-        path: "going-expired",
-        href: "/auth/admin/user-membership",
-        title: "Going Expired",
-        show: user.is_admin == true,
-      },
-      {
-        path: "expired-users",
-        href: "/auth/admin/expired-users",
-        title: "Expired",
-        show: user.is_admin == true,
-      },
-      {
-        path: "stats",
-        href: "/auth/admin/stats",
-        title: "Stats",
-        show: user.is_admin == true,
-      },
-      {
-        path: "server",
-        href: "/auth/admin/server",
-        title: "Server",
-        show: user.is_admin == true,
-      },
-      {
-        path: "plan",
-        href: "/auth/admin/plan",
-        title: "Plan",
-        show: user.is_admin == true,
-      },
+      }
     ];
   
     let installPrompt = null;
@@ -130,7 +83,7 @@
               class="group inline-flex items-center space-x-2 font-bold text-lg tracking-wide text-gray-700 hover:text-cyan-600 active:text-gray-700"
             > 
               <!-- svelte-ignore a11y-missing-attribute -->
-              <img class="h-16" src="/assets/icon-no-bg.png" alt="">
+              <DripformIcon></DripformIcon>
             </a>
             <!-- END Logo -->
   
