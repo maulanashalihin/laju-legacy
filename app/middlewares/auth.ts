@@ -1,25 +1,29 @@
-import Redis from "../services/Redis";
-
+ 
+import DB
+from "../services/DB";
 export default async (request,response) => {
+     
+   if(request.cookies.auth_id)
+   { 
+       const session = await DB.from("sessions").where("id",request.cookies.auth_id).first();
+
+       if(session)
+       {
+           const user = await DB.from("users").where("id",session.user_id).select(["id","name","email","phone","is_admin","is_verified"]).first();
+            
+           
+           request.user = user;
+
+           request.share = {
+               "user" : request.user
+           }
+       }else{ 
+           response.cookie("auth_id","",0).redirect("/login");
+       }
       
-    if(request.cookies.auth_id)
-    { 
-        const user_string = await Redis.get(request.cookies.auth_id);
-
-        if(user_string)
-        {
-            request.user = JSON.parse(user_string);
-
-            request.share = {
-                "user" : request.user
-            }
-        }else{
-            response.status(401).send("Unauthorized");
-        }
-       
-    }
-    else
-    {
-        response.status(401).send("Unauthorized");
-    }
+   }
+   else
+   { 
+       response.cookie("auth_id","",0).redirect("/login");
+   }
 }

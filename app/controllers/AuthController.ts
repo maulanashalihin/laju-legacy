@@ -14,7 +14,7 @@ class AuthController {
   public async registerPage(request, response) {
 
     if (request.cookies.auth_id) {
-      return response.redirect("/auth/whatsapp")
+      return response.redirect("/auth/home")
     }
 
 
@@ -180,9 +180,7 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
 
   public async loginPage(request, response) {
 
-    if (request.cookies.auth_id) {
-      return response.redirect("/auth/whatsapp")
-    }
+ 
 
     return response.inertia("auth/login")
   }
@@ -354,12 +352,12 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
 
       console.log(error)
 
-      return response.redirect("/auth/whatsapp");
+      return response.redirect("/auth/home");
     }
 
     await Redis.setEx("verifikasi-user:" + request.user.id, 60 * 60 * 24, id);
 
-    return response.redirect("/auth/whatsapp");
+    return response.redirect("/auth/home");
   }
 
   public async verifyPage(request, response) {
@@ -375,7 +373,7 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
 
     }
 
-    return response.redirect("/auth/whatsapp?verified=true");
+    return response.redirect("/auth/home?verified=true");
   }
 
 

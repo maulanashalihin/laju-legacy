@@ -22,7 +22,7 @@ class Autenticate {
             user_agent : request.headers["user-agent"]
         }); 
     
-        response.cookie("auth_id",token,1000*60*60*24*30).redirect("/auth/whatsapp");
+        response.cookie("auth_id",token,1000*60*60*24*30).redirect("/auth/home");
     }
 
     async logout(request,response){
