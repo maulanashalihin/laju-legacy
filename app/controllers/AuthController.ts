@@ -72,14 +72,12 @@ class AuthController {
         const user = {
           id : generateUUID(),
           email : email,
-          password : await Authenticate.hash(email),
+          password : await Authenticate.hash(generateUUID()),
           name : name,
           is_verified : verified_email,
           created_at : dayjs().format("YYYY-MM-DD HH:mm:ss"),
           updated_at : dayjs().format("YYYY-MM-DD HH:mm:ss")
-        }
-        console.log(user)
-
+        } 
         await Database.table("users").insert(user);
 
         return Authenticate.process(user,response);;
