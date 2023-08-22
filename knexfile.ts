@@ -10,6 +10,13 @@ const config: { [key: string]: Knex.Config } = {
       filename: "./dev.sqlite3"
     }
   },
+
+  production: {
+    client: "better-sqlite3",
+    connection: {
+      filename: "./production.sqlite3"
+    }
+  },
  
  
 
