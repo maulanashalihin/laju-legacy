@@ -244,6 +244,7 @@ You can study the stacks in the repository in the respective library documentati
 
     wrk -t12 -c400 -d30s http://localhost:3006
 
+```bash
 Running 30s test @ http://localhost:3006
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
@@ -253,12 +254,13 @@ Running 30s test @ http://localhost:3006
   Socket errors: connect 0, read 372, write 0, timeout 0
 Requests/sec: 193834.13
 Transfer/sec:     17.38MB
+```
 
-
-**PURE NODEJS**
+**Native NodeJS**
 
     wrk -t12 -c400 -d30s http://localhost:3007
 
+```bash
 Running 30s test @ http://localhost:3007
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
@@ -268,3 +270,4 @@ Running 30s test @ http://localhost:3007
   Socket errors: connect 0, read 676, write 5, timeout 0
 Requests/sec:  72670.72
 Transfer/sec:     11.09MB
+```
