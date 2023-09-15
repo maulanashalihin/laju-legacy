@@ -1,7 +1,9 @@
 
 # Laju
 
-Full stack boilerplate for your next project. Equipped with the best and the fastest web technology.
+Full Stack Framework for your next project. Equipped with the best and the fastest web technology.
+
+
 
 
 ## Tech Stack
