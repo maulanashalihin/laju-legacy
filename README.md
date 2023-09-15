@@ -1,7 +1,7 @@
 
 # Laju
 
-Full Stack Framework for your next project. Equipped with the best and the fastest web technology.
+Ship your next project faster with Laju. Equipped with the best and the fastest web technology. make your days more enjoyable
 
 
 
