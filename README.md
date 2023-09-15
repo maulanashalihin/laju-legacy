@@ -30,10 +30,12 @@ Clone this repo and install packages
 Create your first API with this simple flow
 
 *web.ts*
-    import UserController from "../app/controllers/UserController"; 
+```bash
 
-    Route.get("/user",UserController.index);
+  import UserController from "../app/controllers/UserController"; 
 
+  Route.get("/user",UserController.index);
+```
 
 *UserController.ts*
 ```bash
@@ -68,10 +70,8 @@ Generate new Controller with **node laju make:controller ControllerFile**
     node laju make:controller User 
 ```
 
+*UserController.ts*
 ```bash
-
-// Generated Controller Script
-
 class Controller {
 
   public async index (request,response) { 
