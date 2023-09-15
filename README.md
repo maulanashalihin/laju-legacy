@@ -1,12 +1,12 @@
 
-# Hyperstack
+# Laju
 
-Full stack boilerplate for your next project. Equipped with the best and easiest web technology.
+Full stack boilerplate for your next project. Equipped with the best and the fastest web technology.
 
 
 ## Tech Stack
 
-**Client:** Svelte, Inertia, TailwindCSS, Webpack Encore
+**Client:** Svelte, Inertia, TailwindCSS, Esbuild
 
 **Server:** Node, Hyper Express (powered by uWebsockets.js), Typescript
 
@@ -20,7 +20,7 @@ Full stack boilerplate for your next project. Equipped with the best and easiest
 Clone this repo and install packages
 
 ```bash
-  git clone https://github.com/maulanashalihin/hyperstack.git
+  git clone https://github.com/maulanashalihin/laju.git
   npm install
   cp .env.example .env
   npm run dev
@@ -57,19 +57,19 @@ you can create controller, command, migration files via command line. this will 
 
 #### 1. Generate Controller
 ```bash
-  node ace make:controller ControllerName
+  node laju make:controller ControllerName
 ```
 
 #### 2. Generate Command
 ```bash
-  node ace make:command CommandName
+  node laju make:command CommandName
 ```
 command file will be generated in commands folder. you can execute the file with `ts-node commands/CommandFile.ts` or `node build/commands/CommandFile.js`
 
 
 #### 2. Generate Migration
 ```bash
-  knex migrate:make MigrationName
+  npx knex migrate:make MigrationName
 ```
 you can create migration files and seeder file with using native knex cli. you can learn it further here. https://knexjs.org/guide/migrations.html
 
@@ -94,7 +94,7 @@ you can create migration files and seeder file with using native knex cli. you c
     ├── routes                  # route configuration
     ├── env.example
     ├── .gitignore
-    ├── ace
+    ├── laju
     ├── clean
     ├── knexfile.ts
     ├── nodemon.json
@@ -102,16 +102,11 @@ you can create migration files and seeder file with using native knex cli. you c
     ├── postcss.config.js
     ├── sync_version
     ├── tailwind.config.js
-    ├── tsconfig.json
-    └── webpack.config.js
-### Server Side Rendering (SSR)
-you can create server side rendering app using svelte. just include svelte files in views folder and pass the file in route or controller like this
+    ├── esbuild.watch.js
+    ├── esbuild.build.js
+    └── tsconfig.json
 
-    Route.get("/hello",async (request,response)=>{  
-
-        request.view("hello.svelte",{name : "Maulana Shalihin"})
-
-    })
+ 
     
 ### Inertia
 create https://inertiajs.com/ with by passing the inertia file in Pages folder like this.
