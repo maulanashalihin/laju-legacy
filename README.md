@@ -1,18 +1,17 @@
 
 # Laju
 
-Ship your next project faster with Laju. Equipped with the best and the fastest web technology. make your days more enjoyable
+Ship your next project faster with Laju.
 
-
-
+Equipped with the *best* and the *fastest* web technology. 
 
 ## Tech Stack
 
-**Client:** Svelte, Inertia, TailwindCSS, Esbuild
+**FrontEnd:** [Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte), [Inertia](https://inertiajs.com/), [TailwindCSS](https://tailwindcss.com/), [esbuild](https://esbuild.github.io/)
 
-**Server:** Node, Hyper Express (powered by uWebsockets.js), Typescript
+**BackEnd:** Hyper Express (powered by uWebsockets.js), Typescript
 
-**Database** : Knex.js, Redis
+**Database** : Knex.js
 
 
 ## Get Started
@@ -49,12 +48,12 @@ You can study the stacks in the repository in the respective library documentati
 [6. Redis](https://github.com/redis/node-redis)
 
 
-[7. Cypress](https://www.cypress.io/)
+[7. esbuild](https://esbuild.github.io/)
 
 
-###  Generator
+###  File Generator
 
-you can create controller, command, migration files via command line. this will speed up your process in application development.
+Speed up development process with File Generator.
 
 #### 1. Generate Controller
 ```bash
@@ -65,7 +64,7 @@ you can create controller, command, migration files via command line. this will 
 ```bash
   node laju make:command CommandName
 ```
-command file will be generated in commands folder. you can execute the file with `ts-node commands/CommandFile.ts` or `node build/commands/CommandFile.js`
+command file will be generated in commands folder. you can execute the file with `npx ts-node commands/CommandFile.ts` (development) or `node build/commands/CommandFile.js` (production)
 
 
 #### 2. Generate Migration
