@@ -25,32 +25,36 @@ Clone this repo and install packages
   npm run dev
 ```
 
+### Route to Controller
+
+Create your first API with this simple flow
+
+    import UserController from "../app/controllers/UserController"; 
+
+    Route.get("/user",UserController.index);
+
+
+
+```bash
+
+// UserController.ts
+
+class Controller {
+
+  public async index (request,response) { 
+
+    const users = await DB.from("users);
+
+    return response.json(users)
+  } 
+
+}
+
+export default new Controller()
+```
+
+
  
-## Documentation
-
-You can study the stacks in the repository in the respective library documentation.
-
-[1. Hyper Express](https://github.com/kartikk221/hyper-express)
-
-
-[2. Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte)
-
-
-[3. Inertia](https://inertiajs.com/)
-
-
-[4. TailwindCSS](https://tailwindcss.com/)
-
-
-[5. Knex.js](https://knexjs.org/)
-
-
-[6. Redis](https://github.com/redis/node-redis)
-
-
-[7. esbuild](https://esbuild.github.io/)
-
-
 ###  File Generator
 
 Speed up development process with File Generator.
@@ -161,12 +165,33 @@ create https://inertiajs.com/ with by passing the inertia file in Pages folder l
     
     }
 
-### Route to Controller
-you can create server side rendering app using svelte. just include svelte files in views folder and pass the file in route or controller like this
 
-    import UserController from "../app/controllers/UserController"; 
+## Documentation
 
-    Route.get("/user",UserController.index);
+You can study the stacks in the repository in the respective library documentation.
+
+[1. Hyper Express](https://github.com/kartikk221/hyper-express)
+
+
+[2. Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte)
+
+
+[3. Inertia](https://inertiajs.com/)
+
+
+[4. TailwindCSS](https://tailwindcss.com/)
+
+
+[5. Knex.js](https://knexjs.org/)
+
+
+[6. Redis](https://github.com/redis/node-redis)
+
+
+[7. esbuild](https://esbuild.github.io/)
+
+
+
     
 ### Benchmark Results
 **Note!** these benchmark test in Macbook Air M1. test script in benchmark folder.
