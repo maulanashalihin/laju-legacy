@@ -43,7 +43,7 @@ class Controller {
 
   public async index (request,response) { 
 
-    const users = await DB.from("users);
+    const users = await DB.from("users");
 
     return response.json(users)
   } 
