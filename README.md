@@ -230,7 +230,9 @@ You can study the stacks in the repository in the respective library documentati
 
     
 ### Benchmark Results
-**Note!** these benchmark test in Macbook Air M1. test script in benchmark folder.
+**Note!** these benchmark test in Macbook Air M1 with [wrk](https://github.com/wg/wrk). test script in benchmark folder.
+
+    wrk -t12 -c400 -d30s http://localhost:3006
 
 |                          | Version | Requests/s | Latency | Throughput/s |
 | :--                      | --:     | :-:        | --:     | --:          | 
