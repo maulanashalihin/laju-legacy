@@ -9,9 +9,9 @@ Equipped with the *best* and the *fastest* web technology.
 
 **FrontEnd:** [Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte), [Inertia](https://inertiajs.com/), [TailwindCSS](https://tailwindcss.com/), [esbuild](https://esbuild.github.io/)
 
-**BackEnd:** Hyper Express (powered by uWebsockets.js), Typescript
+**BackEnd:** [Hyper Express](https://github.com/kartikk221/hyper-express), Typescript
 
-**Database** : Knex.js
+**Database** : [Knex.js](https://knexjs.org/)
 
 
 ## Get Started
@@ -30,7 +30,7 @@ Clone this repo and install packages
 
 You can study the stacks in the repository in the respective library documentation.
 
-[1. Hyper Express](https://github.com/kartikk221/hyper-express/blob/master/docs/Examples.md)
+[1. Hyper Express](https://github.com/kartikk221/hyper-express)
 
 
 [2. Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte)
@@ -58,11 +58,14 @@ Speed up development process with File Generator.
 #### 1. Generate Controller
 ```bash
   node laju make:controller ControllerName
+  //  node laju make:controller User 
 ```
+ 
 
 #### 2. Generate Command
 ```bash
   node laju make:command CommandName
+   //  node laju make:command UnsubUser 
 ```
 command file will be generated in commands folder. you can execute the file with `npx ts-node commands/CommandFile.ts` (development) or `node build/commands/CommandFile.js` (production)
 
