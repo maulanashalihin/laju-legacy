@@ -155,7 +155,7 @@ export async function down(knex: Knex): Promise<void> {
 }
 
 ```
-you can create migration files and seeder file with using native knex cli. you can learn it further here. https://knexjs.org/guide/migrations.html
+Learn more about Knex.js migration here https://knexjs.org/guide/migrations.html
 
     
 
