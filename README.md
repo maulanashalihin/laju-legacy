@@ -240,7 +240,7 @@ You can study the stacks in the repository in the respective library documentati
 | Native NodeJS            | 18.16.0  | 72,670    |  5.45ms  | 11.09 Mb/s  | 
 
 
-**LAJU**
+**Hyper Express / Laju**
 
     wrk -t12 -c400 -d30s http://localhost:3006
 
