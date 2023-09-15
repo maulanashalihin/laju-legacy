@@ -56,16 +56,57 @@ You can study the stacks in the repository in the respective library documentati
 Speed up development process with File Generator.
 
 #### 1. Generate Controller
+
+Controller is some function to handle REST 
+
+Generate new Controller with **node laju make:controller ControllerFile**
+
 ```bash
-  node laju make:controller ControllerName
-  //  node laju make:controller User 
+    node laju make:controller User 
 ```
+
+```bash
+
+// Generated Controller Script
+
+class Controller {
+
+  public async index (request,response) { 
+  }
+
+  public async create (request,response) {
+  }
+
+  public async store (request,response) {
+  }
+
+  public async show (request,response) {
+  }
+
+  public async edit (request,response) {
+  }
+
+  public async update (request,response) {
+  }
+
+  public async destroy (request,response) {
+  }
+
+}
+
+export default new Controller()
+```
+      
  
 
 #### 2. Generate Command
+
+Create Command Line App then you can trigger with cron
+
+Generate new CommandFile with **node laju make:command CommandFile**
+
 ```bash
-  node laju make:command CommandName
-   //  node laju make:command UnsubUser 
+   node laju make:command UnsubUser 
 ```
 command file will be generated in commands folder. you can execute the file with `npx ts-node commands/CommandFile.ts` (development) or `node build/commands/CommandFile.js` (production)
 
