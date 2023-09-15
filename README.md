@@ -29,17 +29,14 @@ Clone this repo and install packages
 
 Create your first API with this simple flow
 
-    // web.ts
-
+*web.ts*
     import UserController from "../app/controllers/UserController"; 
 
     Route.get("/user",UserController.index);
 
 
-
+*UserController.ts*
 ```bash
-
-// UserController.ts
 
 class Controller {
 
