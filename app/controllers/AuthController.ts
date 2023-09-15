@@ -6,8 +6,7 @@ import { redirectParamsURL } from "../services/GoogleAuth";
 import axios from "axios"
 import { generateUUID } from "../services/helper";
 import dayjs from "dayjs"
-import Mailer from "../services/Mailer";
-import e from "express";
+import Mailer from "../services/Mailer"; 
 
 class AuthController {
 

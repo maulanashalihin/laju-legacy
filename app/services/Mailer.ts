@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: 'dripsender.id@gmail.com',
-    pass: 'fhnfwfwnsqxmfmlw'
+    user: process.env.USER_MAILER,
+    pass: process.env.PASS_MAILER
   }
 });
 

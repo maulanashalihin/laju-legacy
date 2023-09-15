@@ -14,10 +14,8 @@ Ship your next project faster with Laju. Equipped with the best and the fastest 
 
 **Database** : Knex.js, Redis
 
-**Testing** : Cypress
 
-
-## Installation
+## Get Started
 
 Clone this repo and install packages
 
@@ -27,7 +25,8 @@ Clone this repo and install packages
   cp .env.example .env
   npm run dev
 ```
-    
+
+ 
 ## Documentation
 
 You can study the stacks in the repository in the respective library documentation.
@@ -127,11 +126,9 @@ you can create server side rendering app using svelte. just include svelte files
     Route.get("/user",UserController.index);
     
 ### Benchmark Results
-**Note!** these benchmarks should be **run over network for proper results** as running these benchmarks on localhost significantly strains the C++ to Javascript communications and class initializations performance due to near **no latency** in request times which is **unrealistic for real world scenarios**.
+**Note!** these benchmark test in Macbook Air M1. test script in benchmark folder.
 
 |                          | Version | Requests/s | Latency | Throughput/s |
-| :--                      | --:     | :-:        | --:     | --:          |
-| uWebsockets.js           | 20.8.0  | 196,544    | 464 ms  | 102 Mb/s     |
-| HyperExpress             | 6.0.0   | 195,832    | 469 ms  | 101 Mb/s     |
-| Fastify                  | 3.28.0  | 13,329     | 746 ms  | 8 Mb/s      |
-| Express                  | 4.17.3  | 5,608      | 1821 ms | 3.7 Mb/s     |
+| :--                      | --:     | :-:        | --:     | --:          | 
+| Laju                     | 6.5.9   | 193,834    |  2.04ms  | 17.38 Mb/s  |
+| Native NodeJS            | 18.16.0  | 72,670    |  5.45ms  | 11.09 Mb/s  | 
