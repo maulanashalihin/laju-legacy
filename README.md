@@ -234,5 +234,5 @@ You can study the stacks in the repository in the respective library documentati
 
 |                          | Version | Requests/s | Latency | Throughput/s |
 | :--                      | --:     | :-:        | --:     | --:          | 
-| Laju                     | 6.5.9   | 193,834    |  2.04ms  | 17.38 Mb/s  |
+| Hyper Express / Laju     | 6.5.9   | 193,834    |  2.04ms  | 17.38 Mb/s  |
 | Native NodeJS            | 18.16.0  | 72,670    |  5.45ms  | 11.09 Mb/s  | 
