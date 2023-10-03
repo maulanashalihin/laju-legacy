@@ -34,7 +34,7 @@ class Command {
 
    getText() {
       return `
-import { Response, Request } from "../../types"; 
+import { Response, Request } from "../../type"; 
 
 class Controller {
     

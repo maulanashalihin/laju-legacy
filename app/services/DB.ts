@@ -5,7 +5,7 @@ require('dotenv').config()
 
 let DB = require('knex')(config[process.env.DB_CONNECTION]);
 
-DB.connection = (stage)=>{
+DB.connection = (stage : string)=>{
     DB = require('knex')(config[stage]);
     return DB;
 }
