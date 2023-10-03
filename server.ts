@@ -5,6 +5,7 @@ import inertia from "./app/middlewares/inertia";
 import Web from "./routes/web"; 
 
 const HyperExpress = require('hyper-express');
+
 const webserver = new HyperExpress.Server();
 
 const LiveDirectory = require('live-directory');
@@ -82,10 +83,11 @@ webserver.get('*', (request, response) => {
     }
 });
 
+const PORT = process.env.PORT || 5000;
  
 // Activate webserver by calling .listen(port, callback);
-webserver.listen(process.env.PORT).then(()=>{
-    console.log(`Server is running at http://localhost:${process.env.PORT}`);
+webserver.listen(PORT).then(()=>{
+    console.log(`Server is running at http://localhost:${PORT}`);
 }).catch((err: any) => {
     console.log(err);
 }) 
