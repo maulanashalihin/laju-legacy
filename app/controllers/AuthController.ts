@@ -229,12 +229,12 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
             return Authenticate.process(user, request, response);
          } else {
             return response
-               .cookie("error", "Maaf, Password salah")
+               .flash("error", "Maaf, Password salah")
                .redirect("/login");
          }
       } else {
          return response
-            .cookie("error", "Email/No.HP tidak terdaftar")
+            .flash("error", "Email/No.HP tidak terdaftar")
             .redirect("/login");
       }
    }

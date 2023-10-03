@@ -18,9 +18,9 @@ const setupProps = async (props,req) => {
 
     let error = req.cookies.error;
 
-     
+    let success = req.cookies.success;
 
-    _props = { ...props, ...share, error };
+    _props = { ...props, ...share, error, success };
 
     return _props;
 };
@@ -81,7 +81,25 @@ export default function inertia(options) : any {
 
     return (req, res, next) => {
 
-        
+       
+        res.flash = (message, data, next) => {
+            if(typeof data == "object")
+            {
+                data = JSON.stringify(data)
+            }
+
+            if(message == "error")
+            {
+                res.cookie('error', data)
+
+            }else if (message == "success")
+            {
+                res.cookie('success', data)
+            }
+
+            return res;
+             
+        };
         
         res.inertia = async (component, inertiaProps, viewProps) => {
             const url = `//${req.get("host")}${
@@ -98,6 +116,11 @@ export default function inertia(options) : any {
             if(inertiaObject.props.error)
             {
                 res.clearCookie("error")
+            }
+
+            if(inertiaObject.props.success)
+            {
+                res.clearCookie("success")
             }
 
             if (!req.header("X-Inertia")) 

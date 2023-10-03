@@ -17,7 +17,7 @@ export default async (request : Request,response : Response) => {
            request.user = user;
 
            request.share = {
-               "user" : request.user
+               "user" : request.user,
            }
        }else{ 
            response.cookie("auth_id","",0).redirect("/login");
