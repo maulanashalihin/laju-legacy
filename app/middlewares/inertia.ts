@@ -47,7 +47,7 @@ const shouldConflict = (req, version) => {
 function view( {page}) {
     
     const result =  `<!DOCTYPE html>
-    <html lang="en-gb" class="dark">
+    <html lang="en-gb" >
     
     <head>
         <meta charset="utf-8">
@@ -80,6 +80,8 @@ export default function inertia(options) : any {
     };
 
     return (req, res, next) => {
+
+        
         
         res.inertia = async (component, inertiaProps, viewProps) => {
             const url = `//${req.get("host")}${
