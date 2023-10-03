@@ -35,6 +35,7 @@ class Command {
    getText() {
       return `
 import { Response, Request } from "../../type"; 
+import DB from "../services/DB";
 
 class Controller {
     

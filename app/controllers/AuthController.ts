@@ -1,5 +1,5 @@
 import Redis from "../services/Redis";
-import Database from "../services/DB";
+import DB from "../services/DB";
 import Authenticate from "../services/Authenticate";
 import { redirectParamsURL } from "../services/GoogleAuth";
 import axios from "axios";
@@ -25,14 +25,14 @@ class AuthController {
      
    }
 
-   public async profilePage(request : Request, response: Response) {
+   public async profilePage(request : Request, response: Response) { 
       return response.inertia("profile");
    }
 
    public async changeProfile(request : Request, response: Response) {
       const data = await request.json();
 
-      await Database.from("users").where("id", request.user.id).update({
+      await DB.from("users").where("id", request.user.id).update({
          name: data.name,
          email: data.email.toLowerCase(),
          phone: data.phone,
@@ -44,7 +44,7 @@ class AuthController {
    public async changePassword(request : Request, response: Response) {
       const data = await request.json();
 
-      const user = await Database.from("users")
+      const user = await DB.from("users")
          .where("id", request.user.id)
          .first();
 
@@ -54,7 +54,7 @@ class AuthController {
       );
 
       if (password_match) {
-         await Database.from("users")
+         await DB.from("users")
             .where("id", request.user.id)
             .update({
                password: await Authenticate.hash(data.new_password),
@@ -90,11 +90,11 @@ class AuthController {
          return response.status(404).send("Link tidak valid");
       }
 
-      await Database.from("users")
+      await DB.from("users")
          .where("id", user_id)
          .update({ password: await Authenticate.hash(password) });
 
-      const user = await Database.from("users").where("id", user_id).first();
+      const user = await DB.from("users").where("id", user_id).first();
 
       return Authenticate.process(user, request, response);
    }
@@ -105,9 +105,9 @@ class AuthController {
       let user;
 
       if (email && email.includes("@")) {
-         user = await Database.from("users").where("email", email).first();
+         user = await DB.from("users").where("email", email).first();
       } else if (phone) {
-         user = await Database.from("users").where("phone", phone).first();
+         user = await DB.from("users").where("phone", phone).first();
       }
 
       if (!user) {
@@ -188,7 +188,7 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
 
       email = email.toLowerCase();
 
-      const check = await Database.from("users").where("email", email).first();
+      const check = await DB.from("users").where("email", email).first();
 
       if (check) {
          //
@@ -204,7 +204,7 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
             updated_at: dayjs().valueOf(),
          };
 
-         await Database.table("users").insert(user);
+         await DB.table("users").insert(user);
 
          return Authenticate.process(user, request, response);
       }
@@ -218,9 +218,9 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
       let user;
 
       if (email && email.includes("@")) {
-         user = await Database.from("users").where("email", email).first();
+         user = await DB.from("users").where("email", email).first();
       } else if (phone) {
-         user = await Database.from("users").where("phone", phone).first();
+         user = await DB.from("users").where("phone", phone).first();
       }
 
       if (user) {
@@ -256,7 +256,7 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
             password: await Authenticate.hash(password),
          };
 
-         const id = await Database.table("users").insert(user);
+         const id = await DB.table("users").insert(user);
 
          return Authenticate.process(user, request, response);
       } catch (error) {
@@ -298,7 +298,7 @@ Jika anda tidak merasa melakukan reset password, abaikan pesan  ini.
       const verifikasi = await Redis.get("verifikasi-user:" + request.user.id);
 
       if (verifikasi == id) {
-         await Database.from("users")
+         await DB.from("users")
             .where("id", request.user.id)
             .update({ is_verified: true });
       }
