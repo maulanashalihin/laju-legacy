@@ -2,12 +2,13 @@ import AuthController from "../app/controllers/AuthController";
 import Auth from "../app/middlewares/auth"
 
 
+import { Response } from "../types";
 
-const HyperExpress = require('hyper-express');
+import { Request } from "hyper-express";
+ 
+import  HyperExpress from 'hyper-express';
 
 const Route = new HyperExpress.Router();
- 
- 
 
 
 // guest routes
@@ -41,12 +42,10 @@ Route.post("/auth/change-profile",AuthController.changeProfile)
 Route.post("/auth/change-password",AuthController.changePassword)
  
 
-Route.get("/",async (req,res)=>{  
-
+Route.get("/",async (req : Request,res : Response)=>{  
 
     res.view("home.svelte")
   
-
 }) 
 
 

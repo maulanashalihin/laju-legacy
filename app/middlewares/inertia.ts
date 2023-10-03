@@ -69,7 +69,10 @@ function view( {page}) {
     
 }
 
-const inertia = (options = {}) => {
+ 
+
+export default function inertia(options) : any {
+
     options = {
         version: null,
         view: "app",
@@ -109,10 +112,11 @@ const inertia = (options = {}) => {
 
             if (shouldConflict(req, options.version)) {
                 if (req.session && typeof req.flash === "function") {
-                    const messages = req.flash();
-                    for (message in messages) {
-                        req.flash(message, messages[message]);
-                    }
+                    // const messages = req.flash();
+                    
+                    // for (message in messages) {
+                    //     req.flash(message, messages[message]);
+                    // }
                 }
                 res.setHeader("X-Inertia-Location", url);
                 return res.status(409).end();
@@ -135,5 +139,4 @@ const inertia = (options = {}) => {
         next();
     };
 };
-
-export default inertia;
+ 

@@ -4,7 +4,7 @@ import inertia from "./app/middlewares/inertia";
 
 import Web from "./routes/web"; 
 
-const HyperExpress = require('hyper-express');
+import HyperExpress from 'hyper-express';
 
 const webserver = new HyperExpress.Server();
 
@@ -83,7 +83,7 @@ webserver.get('*', (request, response) => {
     }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = parseInt(process.env.PORT) || 5000;
  
 // Activate webserver by calling .listen(port, callback);
 webserver.listen(PORT).then(()=>{

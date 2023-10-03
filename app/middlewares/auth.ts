@@ -1,7 +1,9 @@
  
 import DB
 from "../services/DB";
-export default async (request,response) => {
+import { Request, Response } from "../../types";
+
+export default async (request : Request,response : Response) => {
      
    if(request.cookies.auth_id)
    { 

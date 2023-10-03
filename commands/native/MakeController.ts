@@ -1,5 +1,6 @@
 import * as fs from "fs";
 
+
 class Command {
    /**
     * Command name is used to run the command
@@ -30,27 +31,30 @@ class Command {
    }
 
    getText() {
-      return `class Controller {
+      return `
+import { Response, Request } from "../../types"; 
+
+class Controller {
     
-  public async index (request,response) { 
+  public async index (request : Request,response : Response) { 
   }
 
-  public async create (request,response) {
+  public async create (request : Request, response : Response) {
   }
 
-  public async store (request,response) {
+  public async store (request : Request, response : Response) {
   }
 
-  public async show (request,response) {
+  public async show (request : Request, response : Response) {
   }
 
-  public async edit (request,response) {
+  public async edit (request : Request, response : Response) {
   }
 
-  public async update (request,response) {
+  public async update (request : Request, response : Response) {
   }
 
-  public async destroy (request,response) {
+  public async destroy (request : Request, response : Response) {
   }
 
 }
