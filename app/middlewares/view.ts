@@ -3,7 +3,7 @@
  
 import { Request, NextFunction } from 'express';
 
-import { Response } from "../../types"
+import { Response } from "../../type"
 
 
 function view() : any {

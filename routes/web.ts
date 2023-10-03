@@ -2,7 +2,7 @@ import AuthController from "../app/controllers/AuthController";
 import Auth from "../app/middlewares/auth"
 
 
-import { Response } from "../types";
+import { Response } from "../type";
 
 import { Request } from "hyper-express";
  

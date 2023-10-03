@@ -1,7 +1,7 @@
  
 import DB
 from "../services/DB";
-import { Request, Response } from "../../types";
+import { Request, Response } from "../../type";
 
 export default async (request : Request,response : Response) => {
      

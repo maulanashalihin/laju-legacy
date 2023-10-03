@@ -6,7 +6,7 @@ import axios from "axios";
 import { generateUUID } from "../services/helper";
 import dayjs from "dayjs";
 import Mailer from "../services/Mailer";
-import { Response, Request } from "../../types"; 
+import { Response, Request } from "../../type"; 
 
 class AuthController {
    public async registerPage(request : Request, response: Response) {
