@@ -18,7 +18,11 @@ class AuthController {
    }
 
    public async homePage(request : Request, response: Response) {
+
+
       return response.inertia("home");
+
+     
    }
 
    public async profilePage(request : Request, response: Response) {
