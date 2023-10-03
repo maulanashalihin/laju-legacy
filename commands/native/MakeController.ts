@@ -13,6 +13,10 @@ class Command {
       if (this.args.length > 1) {
          let filename = this.args[1] as string;
 
+         if (!filename.includes("Controller")) {
+            filename += "Controller";
+         }
+
          const path = "./app/controllers/" + filename + ".ts";
 
          if (fs.existsSync(path)) {
@@ -22,9 +26,7 @@ class Command {
             return;
          }
 
-         if (!filename.includes("Controller")) {
-            filename += "Controller";
-         }
+         
 
          fs.writeFileSync(path, this.getText());
       }

@@ -1,0 +1,40 @@
+var fs = require("fs");
+
+(async ()=>{
+    
+    const natives = fs.readdirSync("./commands/native");
+    
+    if(natives.length)
+    {
+        const { exec } = require("child_process");
+
+        const args = process.argv.slice(2);
+
+
+        if(natives[0].includes("js"))
+        {
+            
+            exec("node ./commands/index.js "+args.join(" "), (err, stdout, stderr)=>{   
+                if(err)
+                {
+                    console.log(err);
+                }else{
+                    console.log(stdout);
+                }
+            })
+
+        }else if(natives[0].includes("ts")){
+     
+          
+            exec("ts-node ./commands/index.ts "+args.join(" "), (err, stdout, stderr)=>{   
+                if(err)
+                {
+                    console.log(err);
+                }else{
+                    console.log(stdout);
+                }
+            })
+        }
+    }
+  
+})()
