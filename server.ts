@@ -19,6 +19,8 @@ import view from "./app/middlewares/view";
 webserver.use(view());
 // 
 
+ 
+
 var cors = require('cors') 
 
 webserver.use(cors())
@@ -86,8 +88,26 @@ webserver.get('*', (request, response) => {
 const PORT = parseInt(process.env.PORT) || 5000;
  
 // Activate webserver by calling .listen(port, callback);
-webserver.listen(PORT).then(()=>{
+
+webserver
+.set_error_handler((req,res,error : any) => {
+  
+    console.log(error)
+ 
+
+    if(error.code == "SQLITE_ERROR")
+    {
+        res.status(500);
+    }
+
+    res.json(error)
+})
+
+webserver
+.listen(PORT).then(()=>{
     console.log(`Server is running at http://localhost:${PORT}`);
 }).catch((err: any) => {
-    console.log(err);
+
+
+ 
 }) 

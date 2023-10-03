@@ -12,7 +12,7 @@
     function submitForm()
     {
       
-      router.post("/console/login", {email:form.email,password:form.password})
+      router.post("/login", {email:form.email,password:form.password})
     }
   </script>
   
