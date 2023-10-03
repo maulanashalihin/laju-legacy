@@ -1,50 +1,47 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
-class Command   {
+class Command {
+   /**
+    * Command name is used to run the command
+    */
+   public args = [];
 
-  /**
-   * Command name is used to run the command
-   */
-  public args = [];
-  
-  public   commandName = 'make:command'
+   public commandName = "make:command";
 
-  public   run () { 
+   public run() {
+      if (this.args.length > 1) {
+         let filename = this.args[1] as string;
 
-    if(this.args.length > 1)
-    {
-      let filename = this.args[1] as string;
+         filename = filename.replace(/[^a-z0-9]/gi, "");
 
-       filename = filename.replace(/[^a-z0-9]/gi, '');
+         const path = "./commands/" + filename + ".ts";
 
-       const command = filename.toLowerCase()
-      
-      
-      fs.writeFileSync("./commands/"+filename+".ts",this.getText())
-    }
-    
-   
-    
- 
-  }
+         if (fs.existsSync(path)) {
+            //file exists
 
+            console.log("File already exists");
+            return;
+         }
 
-  getText()
-{
-  return `
-  import Database from "../app/services/Database";
+         fs.writeFileSync(path, this.getText());
+      }
+   }
+
+   getText() {
+      return `
+  import DB from "../app/services/DB";
 
   (async () => {
     
-    const users = await Database.from("users").select("*");
+    const users = await DB.from("users").select("*");
 
     console.log(users);
     
     process.exit(1);
   })()
 
-`
-}
+`;
+   }
 }
 
-export default new Command()
+export default new Command();

@@ -1,38 +1,36 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
-class Command   {
+class Command {
+   /**
+    * Command name is used to run the command
+    */
+   public args = [];
 
-  /**
-   * Command name is used to run the command
-   */
-  public args = [];
-  
-  public   commandName = 'make:controller'
+   public commandName = "make:controller";
 
-  public   run () { 
+   public run() {
+      if (this.args.length > 1) {
+         let filename = this.args[1] as string;
 
-    if(this.args.length > 1)
-    {
-      let filename = this.args[1] as string;
+         const path = "./app/controllers/" + filename + ".ts";
 
-      if(!filename.includes("Controller"))
-      {  
-          filename+="Controller"
+         if (fs.existsSync(path)) {
+            //file exists
+
+            console.log("File already exists");
+            return;
+         }
+
+         if (!filename.includes("Controller")) {
+            filename += "Controller";
+         }
+
+         fs.writeFileSync(path, this.getText());
       }
-      
-      
-      fs.writeFileSync("./app/controllers/"+filename+".ts",this.getText())
-    }
-    
-   
-    
- 
-  }
+   }
 
-
-  getText()
-{
-  return `class Controller {
+   getText() {
+      return `class Controller {
     
   public async index (request,response) { 
   }
@@ -58,8 +56,8 @@ class Command   {
 }
 
 export default new Controller()
-  `
-}
+  `;
+   }
 }
 
-export default new Command()
+export default new Command();

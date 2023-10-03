@@ -11,7 +11,6 @@ Equipped with the *best* and the *fastest* web technology.
 | Native NodeJS            | 18.16.0  | 72,670    |  5.45ms  | 11.09 Mb/s  | 
 
 
-
 ## Tech Stack
 
 **FrontEnd:** [Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte), [Inertia](https://inertiajs.com/), [TailwindCSS](https://tailwindcss.com/), [esbuild](https://esbuild.github.io/)
