@@ -1,5 +1,5 @@
 import esbuild from "esbuild";
-
+import crypto from "crypto";
 import svelteInertiaPlugin from "esbuild-svelte-inertia";
 import sveltePlugin from "esbuild-svelte";
 
@@ -10,80 +10,91 @@ let files = {};
 
 let hash = {}
 
+let sse_streams = {};
+
 const port = 8001;
 
 
-import { writeFileSync, readFileSync } from 'fs';
 
+ 
+import {writeFileSync,readFileSync} from 'fs'; 
+ 
 
 
 async function Build(init) {
 
+try {
+  
 
-  try {
+  const start = Date.now();
 
-    const start = Date.now();
+  
 
-    let result = await esbuild.build({
-      entryPoints: ["./resources/js/app.js"],
-      mainFields: ["svelte", "browser", "module", "main"],
-      conditions: ["svelte", "browser"],
-      bundle: true,
-      minify: true,
-      write: false,
-      plugins: [sveltePlugin(), svelteInertiaPlugin()],
-      outdir: 'public',
-    })
+  let result = await esbuild.build({
+    entryPoints: ['./resources/js/app.js'],
+    mainFields: ["svelte", "browser", "module", "main"],
+    conditions: ["svelte", "browser"],
+    bundle: true,
+    minify: false,
+    write: false,
+    plugins: [sveltePlugin(), svelteInertiaPlugin()],
+    outdir: 'public',
+  })
 
-    const end = Date.now();
+  const end = Date.now();
 
-    console.log(`compile done in ${end - start}ms`)
+  console.log(`compile done in ${end - start}ms`)
 
-    const out = result.outputFiles;
+  const out = result.outputFiles;
 
-    let manifest = `{
-  "style.css" : "http://localhost:${port}/style.css",`;
+  let manifest = `{ `;
 
-    let count = 0;
+  let count = 0;
 
-    let push_change = false;
+  let push_change = false;
 
-    for await (const file of out) {
-      count++;
-      const filename = file.path.split("/").pop();
-      files[filename] = file.text;
-      if (hash[filename] != file.hash) {
-        push_change = true;
-        hash[filename] = file.hash;
-      }
-      manifest += `"${filename}": "http://localhost:${port}/${filename}"${count < out.length ? "," : ""}`
-
+  for await (const file of out) {
+   
+    count++;
+    const filename = file.path.split("/").pop();
+    files[filename] = file.text;
+    if(hash[filename] != file.hash)
+    {
+      push_change = true;
+      hash[filename] = file.hash;
     }
-
-    if (push_change && !init) {
-      console.log("compile done, pushing change...")
-      clients.forEach((client) => {
-
-        const send = `data: reload\n\n`;
-
-        client.response.write(send);
-      })
-    }
-
-
-    manifest += `}`
-
-    if (init) {
-      writeFileSync("./public/manifest.json", manifest)
-    }
-
-  } catch (error) {
-
+    manifest += `"${filename}": "http://localhost:${port}/${filename}"${count < out.length  ? "," : ""}`
+   
   }
 
+  
 
+  if(push_change && !init)
+  {
+    console.log("compile done, pushing change...")
 
+    Object.keys(sse_streams).forEach((id) => {
+      sse_streams[id].send("reload");
+  })
 
+  }
+  
+
+  manifest+=` }`
+ 
+ 
+  if(init)
+  { 
+    writeFileSync( "./public/assets/manifest.json", manifest)
+  }
+
+} 
+
+  catch (error) {
+  
+  }
+    
+  
 }
 
 
@@ -92,7 +103,7 @@ import chokidar from "chokidar"
 var watcher = chokidar.watch('resources/js', { ignored: /^\./, persistent: true });
 
 watcher
-  .on('ready', () => {
+  .on('ready', ()=>{
     console.log('Initial scan complete. Ready for changes');
     Build(true)
   })
@@ -103,34 +114,28 @@ watcher
   })
 
 import HyperExpress from 'hyper-express';
+
 const webserver = new HyperExpress.Server();
-
-
-
+ 
 import cors from "cors"
 
 webserver.use(cors())
 
-
 webserver.get("/subscribe", (request, response) => {
 
-  response.status(200).header("Content-Type", "text/event-stream").header("Connection", "keep-alive").header("Cache-Control", "no-cache").header("X-Accel-Buffering", "no");
+  response.status(200).header("Content-Type", "text/event-stream").header("Connection", "keep-alive").header("Cache-Control", "no-cache");
 
-  const data = `data: initialize\n\n`;
+  response.sse.open();
+  // OR you may also send a message which will open the stream automatically
+  response.sse.send('initialize');
+  
+  // Assign a unique identifier to this stream and store it in our broadcast pool
+  response.sse.id = crypto.randomUUID();
 
-  response.write(data);
+  sse_streams[response.sse.id] = response.sse;
 
-  const id = (Math.random() + 1).toString(36).substring(7);;
-
-  clients.push({
-    id: id,
-    response: response
-  });
-
-
-
-  response.on('close', () => {
-    clients = clients.filter((client) => client.id != id);
+  response.on('error', () => {
+    delete sse_streams[response.sse.id];
   });
 
 })
@@ -143,37 +148,26 @@ webserver.get('*', (request, response) => {
 
   const path = request.path.replace('/', '');
 
+ 
   const ext = path.split(".")[1];
 
   try {
-
+ 
 
     let file;
 
-    if (files[path]) {
-      file = files[path]
-    } else {
+    if(path == "favicon.ico")
+    {
+      file = readFileSync("public/icon/favicon.ico");
+    }
+    else if (files[path]) {
+      file = files[path];
+    } else { 
       file = readFileSync("public/" + path);
     }
 
 
-    if (path.includes('.js')) {
-
-      file += `
-        
-        var evtSource = new EventSource('http://localhost:${port}/subscribe');
-
-         evtSource.onmessage = function (event) { 
-          if (event.data.includes("reload")) {
-            
-            location.reload()
-          }
-        };`
-    }
-
-
-
-
+ 
 
     return response.type(ext).send(file);
 

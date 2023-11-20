@@ -10,13 +10,11 @@ const webserver = new HyperExpress.Server();
 
 const LiveDirectory = require('live-directory');
 
-
- import {version} from "./package.json";
+ 
 
 //  rendering html files
-import view from "./app/middlewares/view";
-
-webserver.use(view());
+import "./app/services/View";
+ 
 // 
 
  
@@ -26,16 +24,11 @@ var cors = require('cors')
 webserver.use(cors())
 
 
-
-// rendering svelte files
-require('svelte/register');
+ 
   
 
 webserver.use(
-    inertia({
-        view: "index",
-        version: version
-    })
+    inertia()
 );
 
 webserver.use(Web); 

@@ -1,5 +1,6 @@
 import AuthController from "../app/controllers/AuthController"; 
 import Auth from "../app/middlewares/auth"
+import { view } from "../app/services/View";
 
 
 import { Response } from "../type";
@@ -44,7 +45,8 @@ Route.post("/auth/change-password",AuthController.changePassword)
 
 Route.get("/",async (req : Request,res : Response)=>{  
 
-    res.view("home.svelte")
+
+    return res.type("html").send(view("index.html"))
   
 }) 
 
