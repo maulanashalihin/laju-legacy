@@ -21,7 +21,7 @@ class Autenticate {
       });
 
       response
-         .cookie("auth_id", token, 1000 * 60 * 60 * 24 * 30)
+         .cookie("auth_id", token, 1000 * 60 * 60 * 24 * 60)
          .redirect("/auth/home");
    }
 

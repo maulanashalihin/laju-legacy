@@ -42,7 +42,7 @@ export function view(filename: string, view_data?: any) {
    {
       html = html.replace("</body>",`
       <script>
-      var evtSource = new EventSource('http://localhost:8000/subscribe');
+      var evtSource = new EventSource('http://localhost:8001/subscribe');
 
          evtSource.onmessage = function (event) { 
          if (event.data.includes("reload")) {

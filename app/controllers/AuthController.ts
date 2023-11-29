@@ -100,8 +100,7 @@ class AuthController {
    }
    public async sendResetPassword(request : Request, response: Response) {
       let { email, phone } = await request.json();
-
-      console.log(phone);
+ 
       let user;
 
       if (email && email.includes("@")) {

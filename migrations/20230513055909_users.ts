@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
         table.uuid('id').primary().notNullable()
         table.string('name', 255) 
         table.string('email', 255).notNullable()
+        table.string('phone', 255) 
         table.boolean("is_verified").defaultTo(false) 
         table.dateTime('membership_date');
         table.boolean("is_admin").defaultTo(false);
