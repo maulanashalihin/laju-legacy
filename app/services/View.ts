@@ -1,4 +1,5 @@
 import { readFileSync, readdirSync, statSync } from "fs";
+import * as Sqrl from 'squirrelly'
 const manifest = require("../../public/manifest.json");
 import path from "path";
 
@@ -28,12 +29,11 @@ export function view(filename: string, view_data?: any) {
 
    let html = process.env.CACHE_VIEW == "true" ?  html_files[directory + "/" + filename] : readFileSync(path.join(directory, filename), "utf8");;
    
-   Object.keys(manifest).forEach(filename=>{
-      html = html.replace(`{${filename}}`,manifest[filename])
-   })
+ 
 
-   keys.forEach((key) => {
-      html = html.replace(`{${key}}`, view_data[key]);
+   html = Sqrl.render(html, {
+      ...view_data,
+      ...manifest
    });
 
 

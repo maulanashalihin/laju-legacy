@@ -4,11 +4,9 @@ import { Knex } from "knex";
 export async function up(knex: Knex): Promise<void> {
     await knex.schema.createTable('users', function (table) {
         table.uuid('id').primary().notNullable()
-        table.string('name', 255)
-        table.string('phone', 255)
+        table.string('name', 255) 
         table.string('email', 255).notNullable()
-        table.boolean("is_verified").defaultTo(false)
-        table.uuid("plan_id")
+        table.boolean("is_verified").defaultTo(false) 
         table.dateTime('membership_date');
         table.boolean("is_admin").defaultTo(false);
         table.string('password', 180).notNullable()

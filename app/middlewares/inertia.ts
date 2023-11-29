@@ -26,7 +26,7 @@ const inertia = () => {
 
          if (!req.header("X-Inertia")) {
             const html = await view("inertia.html", {
-               page: JSON.stringify(inertiaObject).replace(/"/g, "&quot;"),
+               page: JSON.stringify(inertiaObject),
                title:    "Blogpost",
                app_js: asset("app.js"),
             });

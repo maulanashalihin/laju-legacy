@@ -104,3 +104,8 @@ webserver
 
  
 }) 
+
+process.on('SIGTERM', () => {
+    console.info('SIGTERM signal received.');
+    process.exit(0);
+  });
