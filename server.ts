@@ -53,7 +53,7 @@ webserver.get('*', (request, response) => {
     // Strip away '/assets' from the request path to get asset relative path
     // Lookup LiveFile instance from our LiveDirectory instance.
 
-    const path = request.path.replace('/', '');
+    const path = request.path.replace('/', '').replaceAll("%20"," ");
  
  
 
