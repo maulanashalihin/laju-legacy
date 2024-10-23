@@ -1,8 +1,9 @@
-import {v4} from "uuid";
+ 
 
+import { randomUUID } from "crypto";
 import manifest from "../../public/manifest.json"; 
 export function generateUUID() {
-    return v4();
+    return randomUUID();
 }
 
 export function asset(path)

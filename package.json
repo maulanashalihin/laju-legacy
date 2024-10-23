@@ -22,7 +22,6 @@
     "better-sqlite3": "^11.5.0",
     "concurrently": "^9.0.1",
     "cors": "^2.8.5",
-    "cypress": "^13.15.0",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
     "esbuild": "0.24.0",
@@ -37,7 +36,6 @@
     "redis": "^4.7.0",
     "squirrelly": "^9.1.0",
     "toastify-js": "^1.12.0",
-    "uuid": "^10.0.0",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.48.0"
   },
   "devDependencies": {
