@@ -53,14 +53,14 @@
               {/if}
               <form class="space-y-4 md:space-y-6" on:submit|preventDefault={submitForm}>
                   <div>
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900  ">Nama Lembaga/Sekolah</label>
-                    <input bind:value={form.name} required type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full p-2.5 placeholder:text-gray-300" placeholder="SMPN 1 Kandangan" >
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900  ">Nama</label>
+                    <input bind:value={form.name} required type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full p-2.5 placeholder:text-gray-300" placeholder="Maulana Ibrahim" >
                 </div>
                 
                  
                 <div>
                   <label for="email" class="block mb-2 text-sm font-medium text-gray-900  ">Email</label>
-                  <input bind:value={form.email} required type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full p-2.5 placeholder:text-gray-300" placeholder="emailsekolah@gmail.com" >
+                  <input bind:value={form.email} required type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full p-2.5 placeholder:text-gray-300" placeholder="maulanaibrahim@gmail.com" >
               </div> 
                   <div>
                       <label for="password" class="block mb-2 text-sm font-medium text-gray-900  ">Password</label>

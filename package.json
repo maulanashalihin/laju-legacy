@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@inertiajs/svelte": "^1.2.0",
+    "@inertiajs/svelte": "^2.0.0-beta.2",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "better-sqlite3": "^11.5.0",
@@ -35,8 +35,7 @@
     "nodemailer": "^6.9.15",
     "redis": "^4.7.0",
     "squirrelly": "^9.1.0",
-    "toastify-js": "^1.12.0",
-    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.48.0"
+    "toastify-js": "^1.12.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",

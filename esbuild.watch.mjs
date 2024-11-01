@@ -1,6 +1,5 @@
 import esbuild from "esbuild";
-import crypto from "crypto";
-import svelteInertiaPlugin from "esbuild-svelte-inertia";
+import crypto from "crypto"; 
 import sveltePlugin from "esbuild-svelte";
 
 
@@ -37,7 +36,7 @@ try {
     bundle: true,
     minify: false,
     write: false,
-    plugins: [sveltePlugin(), svelteInertiaPlugin()],
+    plugins: [sveltePlugin()],
     outdir: 'public',
   })
 

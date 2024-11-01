@@ -37,7 +37,7 @@
                 <form class="space-y-4 md:space-y-6" on:submit|preventDefault={submitForm}>
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
-                        <input bind:value={form.email} required type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full p-2.5 " placeholder="emailsekolah@gmail.com" >
+                        <input bind:value={form.email} required type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full p-2.5 " placeholder="maulanaibrahim@gmail.com" >
                      
                     </div>
                     <div>
