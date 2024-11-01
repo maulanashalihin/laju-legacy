@@ -1,6 +1,5 @@
 import esbuild from "esbuild";
- 
-import svelteInertiaPlugin from "esbuild-svelte-inertia";
+  
 import sveltePlugin from "esbuild-svelte";
 
 import { dirname } from 'path';
@@ -20,7 +19,7 @@ const result = await esbuild.build({
     splitting: true, 
     format: 'esm',
     outdir: 'public',
-  plugins: [sveltePlugin(), svelteInertiaPlugin()],
+  plugins: [sveltePlugin()],
 }) 
 
 const hash = (Math.random() + 1).toString(36).substring(7);;
