@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import {v4} from "uuid"
+let randomUUID = self.crypto.randomUUID();
+import dayjs from "dayjs"; 
 var relativeTime = require('dayjs/plugin/relativeTime')
 import Toastify from "toastify-js";
 dayjs.extend(relativeTime)
@@ -79,13 +79,13 @@ export function clickOutside(node) {
   export function SectionList()
   {
     return {title : "Section Title",rows :  [
-      {title: 'Row 1', description: "Hello it's description", rowId: v4()}
+      {title: 'Row 1', description: "Hello it's description", rowId: randomUUID()},
     ]};
   }
 
   export function ListItem()
   {
-   return {title: 'Row Title', description: "Hello it's description", rowId: v4()}
+   return {title: 'Row Title', description: "Hello it's description", rowId: randomUUID()}
   }
 
 

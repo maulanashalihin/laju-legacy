@@ -1,4 +1,4 @@
-require('dotenv').config()
+ 
 
 import inertia from "./app/middlewares/inertia";
 
