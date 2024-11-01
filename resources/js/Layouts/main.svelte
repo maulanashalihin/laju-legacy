@@ -196,7 +196,7 @@
   
             <!-- Toggle Mobile Navigation -->
             <div class="lg:hidden">
-              <button
+              <button aria-label="Toggle Mobile Navigation"
                 on:click={() => {
                   mobile_menu = !mobile_menu;
                 }}
